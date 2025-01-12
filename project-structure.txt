@@ -1,0 +1,12 @@
+your-project/
+├── .env
+├── package.json
+├── next.config.js
+├── pages/
+│   ├── api/
+│   │   └── gist.ts
+│   └── index.tsx
+└── components/
+    └── JsonGenerator.tsx
+
+1
