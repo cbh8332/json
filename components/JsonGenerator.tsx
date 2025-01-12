@@ -69,27 +69,29 @@ const ConfigEditor = () => {
     };
   };
 
-  // 导入配置
-  const handleImport = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const imported = JSON.parse(e.target.result);
-          if (imported.name !== undefined && imported.description !== undefined && Array.isArray(imported.task)) {
-            setConfig(parseLoadedData(imported));
-            setMessage('导入成功');
-          } else {
-            throw new Error('格式不正确');
-          }
-        } catch (error) {
-          setMessage('导入失败：' + error.message);
+// 导入配置
+const handleImport = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        // 强制将 result 转换为 string
+        const imported = JSON.parse(e.target.result as string);
+        if (imported.name !== undefined && imported.description !== undefined && Array.isArray(imported.task)) {
+          setConfig(parseLoadedData(imported));
+          setMessage('导入成功');
+        } else {
+          throw new Error('格式不正确');
         }
-      };
-      reader.readAsText(file);
-    }
-  };
+      } catch (error) {
+        setMessage('导入失败：' + error.message);
+      }
+    };
+    reader.readAsText(file); // 使用 readAsText 以获取字符串形式的文件内容
+  }
+};
+
 
   // 保存配置到 Gist
   const saveConfig = async () => {
