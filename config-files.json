@@ -1,6 +1,6 @@
 // package.json
 {
-  "name": "json-config-generator",
+  "name": "config-editor",
   "version": "0.1.0",
   "private": true,
   "scripts": {
