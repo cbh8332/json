@@ -50,7 +50,7 @@ const ConfigEditor = () => {
       ...config,
       task: config.task.map(task => ({
         addons: task.addons,
-        [tag=${task.tag}] 
+        [`${task.tag}`]: ''  // 将 tag 值转换为 "tag=xxx": ""
       }))
     };
   };
