@@ -8,5 +8,3 @@ your-project/
 │   └── index.tsx
 └── components/
     └── JsonGenerator.tsx
-
-1
